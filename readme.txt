@@ -10,7 +10,7 @@ Stable tag: 1.0
 Easy WP Cleaner is user friendly plugin to clean unnecessary data from WordPress database and also allows you to optimize your WordPress database.
 
 
-== Description ==
+=== Description ===
 
 Easy WP Cleaner is user friendly plugin to clean unnecessary data from WordPress database like "revision", "draft", "auto draft", "moderated comments", "spam comments", "trash comments", "orphan postmeta", "orphan commentmeta", "orphan relationships", "dashboard transient feed" and this plugin also allows you to optimize your WordPress database without any tool like phpMyAdmin.
 
