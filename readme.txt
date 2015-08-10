@@ -1,4 +1,4 @@
-=== WP Clean Up ===
+=== Easy WP Cleaner ===
 Contributors: Nikunj Soni
 Donate link: http://www.nikunjsoni.co.in/donate/
 Tags: Easy WP Cleaner,clean,cleaner,database,mysql,comments,commentmeta,posts,postmeta,post revisions,delete revision,optimize,optimize database,revision,draft,auto draft,moderated,spam,trash,relationships,transient feed,phpMyAdmin
