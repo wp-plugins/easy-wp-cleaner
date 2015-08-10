@@ -5,7 +5,7 @@ Tags: Easy WP Cleaner,clean,cleaner,database,mysql,comments,commentmeta,posts,po
 License: GPLv2
 Requires at least: 2.7
 Tested up to: 4.2.4
-Stable tag: 4.3
+Stable tag: 1.0
 
 Easy WP Cleaner is user friendly plugin to clean unnecessary data from WordPress database and also allows you to optimize your WordPress database.
 
