@@ -38,6 +38,7 @@ Usage :
 
 == Other Notes ==
 
+
 Usage :
 
 1. Download and extract this plugin to `wp-content/plugins/`
