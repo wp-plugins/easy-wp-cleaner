@@ -20,7 +20,7 @@
 					<h3 class="hndle"><span>What are Revisions?</span></h3>
 					<div class="inside">
 						<div class="main">
-							<p><span>WordPress automatically saves multiple copies of your posts while they are being written so they can be restored if an editing mistake is made. This can be quite handy if you are running a multi-author blog, but for most of us it means insane number of duplicate posts in our databases. <a href="https://codex.wordpress.org/Revisions" target="_blank">Learn more</a></span></p>
+							<p><span>WordPress automatically saves multiple copies of your posts while they are being written so they can be restored if an editing mistake is made. This can be quite handy if you are running a multi-author blog, but for most of us it means number of duplicate posts in our databases. <a href="https://codex.wordpress.org/Revisions" target="_blank">Learn more</a></span></p>
 						</div>
 					</div>
 				</div>
