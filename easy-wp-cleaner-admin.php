@@ -386,16 +386,16 @@ function easy_wp_cleaner_optimize(){
 				</thead>
 				<tbody id="the-list">
 					<tr>
-						<th>
+						<td>
 							If you enjoy this plugin,<br/> please give it 5 stars on WordPress:
 							<a title="Easy WP Cleaner" target="_blank" href="https://wordpress.org/support/view/plugin-reviews/easy-wp-cleaner">Rate the plugin</a>
-						</th>
+						</td>
 					</tr>
 					<tr>
-						<th>
+						<td>
 							If there is something wrong about it,<br/> or you need to give your valuable suggestion please contact me:
 							<a target="_blank" href="http://www.nikunjsoni.co.in">http://www.nikunjsoni.co.in</a>
-						</th>
+						</td>
 					</tr>
 				</tbody>
 			</table>
