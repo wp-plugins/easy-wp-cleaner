@@ -4,9 +4,7 @@ function easy_wp_cleaner_admin() {
 }
 function easy_wp_cleaner_page(){
 ?>
-
-<div>
-<h2>Easy WP Cleaner</h2>
+<style type="text/css"> .plugin-title{ font-size:20px !important; margin:0px 25px } </style>
 <?php
 function easy_wp_cleaner($type){
 	global $wpdb;
@@ -115,52 +113,52 @@ function easy_wp_cleaner_optimize(){
 
 	if(isset($_POST['easy_wp_cleaner_revision'])){
 		easy_wp_cleaner('revision');
-		$ewc_message = __("All revisions are deleted","Easy-WP-Cleaner");
+		$ewc_message = "All revisions are deleted";
 	}
 
 	if(isset($_POST['easy_wp_cleaner_draft'])){
 		easy_wp_cleaner('draft');
-		$ewc_message = __("All drafts are deleted","Easy-WP-Cleaner");
+		$ewc_message = "All drafts are deleted";
 	}
 
 	if(isset($_POST['easy_wp_cleaner_autodraft'])){
 		easy_wp_cleaner('autodraft');
-		$ewc_message = __("All autodrafts are deleted","Easy-WP-Cleaner");
+		$ewc_message = "All autodrafts are deleted";
 	}
 	
 	if(isset($_POST['easy_wp_cleaner_moderated'])){
 		easy_wp_cleaner('moderated');
-		$ewc_message = __("All moderated comments are deleted","Easy-WP-Cleaner");
+		$ewc_message = "All moderated comments are deleted";
 	}
 
 	if(isset($_POST['easy_wp_cleaner_spam'])){
 		easy_wp_cleaner('spam');
-		$ewc_message = __("All spam comments are deleted","Easy-WP-Cleaner");
+		$ewc_message = "All spam comments are deleted";
 	}
 
 	if(isset($_POST['easy_wp_cleaner_trash'])){
 		easy_wp_cleaner('trash');
-		$ewc_message = __("All trash comments are deleted","Easy-WP-Cleaner");
+		$ewc_message = "All trash comments are deleted";
 	}
 
 	if(isset($_POST['easy_wp_cleaner_postmeta'])){
 		easy_wp_cleaner('postmeta');
-		$ewc_message = __("All orphan postmeta are deleted","Easy-WP-Cleaner");
+		$ewc_message = "All orphan postmeta are deleted";
 	}
 
 	if(isset($_POST['easy_wp_cleaner_commentmeta'])){
 		easy_wp_cleaner('commentmeta');
-		$ewc_message = __("All orphan commentmeta are deleted","Easy-WP-Cleaner");
+		$ewc_message = "All orphan commentmeta are deleted";
 	}
 
 	if(isset($_POST['easy_wp_cleaner_relationships'])){
 		easy_wp_cleaner('relationships');
-		$ewc_message = __("All orphan relationships are deleted","Easy-WP-Cleaner");
+		$ewc_message = "All orphan relationships are deleted";
 	}
 
 	if(isset($_POST['easy_wp_cleaner_feed'])){
 		easy_wp_cleaner('feed');
-		$ewc_message = __("All dashboard transient feed are deleted","Easy-WP-Cleaner");
+		$ewc_message = "All dashboard transient feed are deleted";
 	}
 
 	if(isset($_POST['easy_wp_cleaner_all'])){
@@ -174,204 +172,234 @@ function easy_wp_cleaner_optimize(){
 		easy_wp_cleaner('commentmeta');
 		easy_wp_cleaner('relationships');
 		easy_wp_cleaner('feed');
-		$ewc_message = __("All unnecessary data are deleted","Easy-WP-Cleaner");
+		$ewc_message = "All unnecessary data are deleted";
 	}
 
 	if(isset($_POST['easy_wp_cleaner_optimize'])){
 		easy_wp_cleaner_optimize();
-		$ewc_message = __("Database optimized successfully","Easy-WP-Cleaner");
+		$ewc_message = "Database optimized successfully";
 	}
 
 	if($ewc_message != ''){
 		echo '<div id="message" class="updated"><p><strong>' . $ewc_message . '</strong></p></div>';
 	}
+	
+	$help_class = $settings_class = '';
+	if( $_REQUEST['tab'] == 'settings' or  $_REQUEST['tab'] == '' ){ 
+		$settings_class = 'nav-tab-active';
+	}else if( $_REQUEST['tab'] == 'help' ){ 
+		$help_class = 'nav-tab-active';
+	}
 ?>
-<hr/>
-<div class="row">
-	<div class="col-lg-6">
-		<div class="panel panel-default">
-			<div class="panel-heading">Notifications</div>
-			<div class="panel-body">
-				<div class="table-responsive">
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th scope="col"><?php _e('Type','Easy-WP-Cleaner'); ?></th>
-								<th scope="col"><?php _e('Count','Easy-WP-Cleaner'); ?></th>
-								<th scope="col"><?php _e('','Easy-WP-Cleaner'); ?></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><?php _e('Revision','Easy-WP-Cleaner'); ?></td>
-								<td><?php echo easy_wp_cleaner_count('revision'); ?></td>
-								<td>
-									<form action="" method="post">
-										<input type="hidden" name="easy_wp_cleaner_revision" value="revision" />
-										<input type="submit" class="<?php if(easy_wp_cleaner_count('revision')>0){echo 'button-primary';}else{echo 'hide';} ?>" value="<?php _e('Delete','Easy-WP-Cleaner'); ?>" />
-									</form>
-								</td>
-							</tr>
-							<tr>
-								<td><?php _e('Draft','Easy-WP-Cleaner'); ?></td>
-								<td><?php echo easy_wp_cleaner_count('draft'); ?></td>
-								<td>
-									<form action="" method="post">
-										<input type="hidden" name="easy_wp_cleaner_draft" value="draft" />
-										<input type="submit" class="<?php if(easy_wp_cleaner_count('draft')>0){echo 'button-primary';}else{echo 'hide';} ?>" value="<?php _e('Delete','Easy-WP-Cleaner'); ?>" />
-									</form>
-								</td>
-							</tr>
-							<tr>
-								<td><?php _e('Auto Draft','Easy-WP-Cleaner'); ?></td>
-								<td><?php echo easy_wp_cleaner_count('autodraft'); ?></td>
-								<td>
-									<form action="" method="post">
-										<input type="hidden" name="easy_wp_cleaner_autodraft" value="autodraft" />
-										<input type="submit" class="<?php if(easy_wp_cleaner_count('autodraft')>0){echo 'button-primary';}else{echo 'hide';} ?>" value="<?php _e('Delete','Easy-WP-Cleaner'); ?>" />
-									</form>
-								</td>
-							</tr>
-							<tr>
-								<td><?php _e('Moderated Comments','Easy-WP-Cleaner'); ?></td>
-								<td><?php echo easy_wp_cleaner_count('moderated'); ?></td>
-								<td>
-									<form action="" method="post">
-										<input type="hidden" name="easy_wp_cleaner_moderated" value="moderated" />
-										<input type="submit" class="<?php if(easy_wp_cleaner_count('moderated')>0){echo 'button-primary';}else{echo 'hide';} ?>" value="<?php _e('Delete','Easy-WP-Cleaner'); ?>" />
-									</form>
-								</td>
-							</tr>
-							<tr>
-								<td><?php _e('Spam Comments','Easy-WP-Cleaner'); ?></td>
-								<td><?php echo easy_wp_cleaner_count('spam'); ?></td>
-								<td>
-									<form action="" method="post">
-										<input type="hidden" name="easy_wp_cleaner_spam" value="spam" />
-										<input type="submit" class="<?php if(easy_wp_cleaner_count('spam')>0){echo 'button-primary';}else{echo 'hide';} ?>" value="<?php _e('Delete','Easy-WP-Cleaner'); ?>" />
-									</form>
-								</td>
-							</tr>
-							<tr>
-								<td><?php _e('Trash Comments','Easy-WP-Cleaner'); ?></td>
-								<td><?php echo easy_wp_cleaner_count('trash'); ?></td>
-								<td>
-									<form action="" method="post">
-										<input type="hidden" name="easy_wp_cleaner_trash" value="trash" />
-										<input type="submit" class="<?php if(easy_wp_cleaner_count('trash')>0){echo 'button-primary';}else{echo 'hide';} ?>" value="<?php _e('Delete','Easy-WP-Cleaner'); ?>" />
-									</form>
-								</td>
-							</tr>
-							<tr>
-								<td><?php _e('Orphan Postmeta','Easy-WP-Cleaner'); ?></td>
-								<td><?php echo easy_wp_cleaner_count('postmeta'); ?></td>
-								<td>
-									<form action="" method="post">
-										<input type="hidden" name="easy_wp_cleaner_postmeta" value="postmeta" />
-										<input type="submit" class="<?php if(easy_wp_cleaner_count('postmeta')>0){echo 'button-primary';}else{echo 'hide';} ?>" value="<?php _e('Delete','Easy-WP-Cleaner'); ?>" />
-									</form>
-								</td>
-							</tr>
-							<tr>
-								<td><?php _e('Orphan Commentmeta','Easy-WP-Cleaner'); ?></td>
-								<td><?php echo easy_wp_cleaner_count('commentmeta'); ?></td>
-								<td>
-									<form action="" method="post">
-										<input type="hidden" name="easy_wp_cleaner_commentmeta" value="commentmeta" />
-										<input type="submit" class="<?php if(easy_wp_cleaner_count('commentmeta')>0){echo 'button-primary';}else{echo 'hide';} ?>" value="<?php _e('Delete','Easy-WP-Cleaner'); ?>" />
-									</form>
-								</td>
-							</tr>
-							<tr>
-								<td><?php _e('Orphan Relationships','Easy-WP-Cleaner'); ?></td>
-								<td><?php echo easy_wp_cleaner_count('relationships'); ?></td>
-								<td>
-									<form action="" method="post">
-										<input type="hidden" name="easy_wp_cleaner_relationships" value="relationships" />
-										<input type="submit" class="<?php if(easy_wp_cleaner_count('relationships')>0){echo 'button-primary';}else{echo 'hide';} ?>" value="<?php _e('Delete','Easy-WP-Cleaner'); ?>" />
-									</form>
-								</td>
-							</tr>
-							<tr>
-								<td><?php _e('Dashboard Transient Feed','Easy-WP-Cleaner'); ?></td>
-								<td><?php echo easy_wp_cleaner_count('feed'); ?></td>
-								<td>
-									<form action="" method="post">
-										<input type="hidden" name="easy_wp_cleaner_feed" value="feed" />
-										<input type="submit" class="<?php if(easy_wp_cleaner_count('feed')>0){echo 'button-primary';}else{echo 'hide';} ?>" value="<?php _e('Delete','Easy-WP-Cleaner'); ?>" />
-									</form>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<form action="" method="post">
-						<input type="hidden" name="easy_wp_cleaner_all" value="all" />
-						<input type="submit" class="button-primary" value="<?php _e('Delete All','Easy-WP-Cleaner'); ?>" />
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+
+<div class="wrap">
+		<h2 class="nav-tab-wrapper" style="margin:10px 0px">
+			<span class="plugin-title">Easy WP Cleaner</span>
+			<a class="nav-tab <?php echo $settings_class;?>" href="options-general.php?page=easy-wp-cleaner/easy-wp-cleaner-admin.php&tab=settings">Settings</a>
+			<a class="nav-tab <?php echo $help_class;?>" href="options-general.php?page=easy-wp-cleaner/easy-wp-cleaner-admin.php&tab=help">Help</a>
+		</h2>
+		
+		<?php if( $settings_class != null ){ ?>
+			
+			<table class="widefat" style="width:400px">
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Count</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody id="the-list">
+					<tr class="alternate">
+						<td class="column-name">Revision</td>
+						<td class="column-name"><?php echo easy_wp_cleaner_count('revision'); ?></td>
+						<td class="column-name">
+							<form action="" method="post">
+								<input type="hidden" name="easy_wp_cleaner_revision" value="revision" />
+								<input type="submit" class="<?php if(easy_wp_cleaner_count('revision')>0){echo 'button-primary';}else{echo 'button';} ?>" value="Delete" />
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td class="column-name">Draft</td>
+						<td class="column-name"><?php echo easy_wp_cleaner_count('draft'); ?></td>
+						<td class="column-name">
+							<form action="" method="post">
+								<input type="hidden" name="easy_wp_cleaner_draft" value="draft" />
+								<input type="submit" class="<?php if(easy_wp_cleaner_count('draft')>0){echo 'button-primary';}else{echo 'button';} ?>" value="Delete" />
+							</form>
+						</td>
+					</tr>
+					<tr class="alternate">
+						<td class="column-name">Auto Draft</td>
+						<td class="column-name"><?php echo easy_wp_cleaner_count('autodraft'); ?></td>
+						<td class="column-name">
+							<form action="" method="post">
+								<input type="hidden" name="easy_wp_cleaner_autodraft" value="autodraft" />
+								<input type="submit" class="<?php if(easy_wp_cleaner_count('autodraft')>0){echo 'button-primary';}else{echo 'button';} ?>" value="Delete" />
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td class="column-name">Moderated Comments</td>
+						<td class="column-name"><?php echo easy_wp_cleaner_count('moderated'); ?></td>
+						<td class="column-name">
+							<form action="" method="post">
+								<input type="hidden" name="easy_wp_cleaner_moderated" value="moderated" />
+								<input type="submit" class="<?php if(easy_wp_cleaner_count('moderated')>0){echo 'button-primary';}else{echo 'button';} ?>" value="Delete" />
+							</form>
+						</td>
+					</tr>
+					<tr class="alternate">
+						<td class="column-name">Spam Comments</td>
+						<td class="column-name"><?php echo easy_wp_cleaner_count('spam'); ?></td>
+						<td class="column-name">
+							<form action="" method="post">
+								<input type="hidden" name="easy_wp_cleaner_spam" value="spam" />
+								<input type="submit" class="<?php if(easy_wp_cleaner_count('spam')>0){echo 'button-primary';}else{echo 'button';} ?>" value="Delete" />
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td class="column-name">Trash Comments</td>
+						<td class="column-name"><?php echo easy_wp_cleaner_count('trash'); ?></td>
+						<td class="column-name">
+							<form action="" method="post">
+								<input type="hidden" name="easy_wp_cleaner_trash" value="trash" />
+								<input type="submit" class="<?php if(easy_wp_cleaner_count('trash')>0){echo 'button-primary';}else{echo 'button';} ?>" value="Delete" />
+							</form>
+						</td>
+					</tr>
+					<tr class="alternate">
+						<td class="column-name">Orphan Postmeta</td>
+						<td class="column-name">
+							<?php echo easy_wp_cleaner_count('postmeta'); ?>
+						</td>
+						<td class="column-name">
+							<form action="" method="post">
+								<input type="hidden" name="easy_wp_cleaner_postmeta" value="postmeta" />
+								<input type="submit" class="<?php if(easy_wp_cleaner_count('postmeta')>0){echo 'button-primary';}else{echo 'button';} ?>" value="Delete" />
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td class="column-name">Orphan Commentmeta</td>
+						<td class="column-name">
+							<?php echo easy_wp_cleaner_count('commentmeta'); ?>
+						</td>
+						<td class="column-name">
+							<form action="" method="post">
+								<input type="hidden" name="easy_wp_cleaner_commentmeta" value="commentmeta" />
+								<input type="submit" class="<?php if(easy_wp_cleaner_count('commentmeta')>0){echo 'button-primary';}else{echo 'button';} ?>" value="Delete" />
+							</form>
+						</td>
+					</tr>
+					<tr class="alternate">
+						<td class="column-name">Orphan Relationships</td>
+						<td class="column-name">
+							<?php echo easy_wp_cleaner_count('relationships'); ?>
+						</td>
+						<td class="column-name">
+							<form action="" method="post">
+								<input type="hidden" name="easy_wp_cleaner_relationships" value="relationships" />
+								<input type="submit" class="<?php if(easy_wp_cleaner_count('relationships')>0){echo 'button-primary';}else{echo 'button';} ?>" value="Delete" />
+							</form>
+						</td>
+					</tr>
+					<tr>
+						<td class="column-name">Dashboard Transient Feed</td>
+						<td class="column-name"><?php echo easy_wp_cleaner_count('feed'); ?></td>
+						<td class="column-name">
+							<form action="" method="post">
+								<input type="hidden" name="easy_wp_cleaner_feed" value="feed" />
+								<input type="submit" class="<?php if(easy_wp_cleaner_count('feed')>0){echo 'button-primary';}else{echo 'button';} ?>" value="Delete" />
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</p>
+			<p>
+			<form action="" method="post">
+				<input type="hidden" name="easy_wp_cleaner_all" value="all" />
+				<input type="submit" class="button-primary" value="Delete All" />
+			</form>
+			</p>
+
+			<table class="widefat" style="width:400px">
+				<thead>
+					<tr>
+						<th>Table</th>
+						<th>Size</th>
+					</tr>
+				</thead>
+				<tbody id="the-list">
+				<?php
+					global $wpdb;
+					$total_size = 0;
+					$alternate = " class='alternate'";
+					$wcu_sql = 'SHOW TABLE STATUS FROM `'.DB_NAME.'`';
+					$result = $wpdb->get_results($wcu_sql);
+
+					foreach($result as $row){
+
+						$table_size = $row->Data_length + $row->Index_length;
+						$table_size = $table_size / 1024;
+						$table_size = sprintf("%0.3f",$table_size);
+
+						$every_size = $row->Data_length + $row->Index_length;
+						$every_size = $every_size / 1024;
+						$total_size += $every_size;
+
+						echo "<tr". $alternate .">
+								<td class='column-name'>". $row->Name ."</td>
+								<td class='column-name'>". $table_size ." KB"."</td>
+							</tr>\n";
+						$alternate = (empty($alternate)) ? " class='alternate'" : "";
+					}
+				?>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th>Total</th>
+						<th style="font-family:Tahoma;"><?php echo sprintf("%0.3f",$total_size).' KB'; ?></th>
+					</tr>
+				</tfoot>
+			</table>
+			<p>
+			<form action="" method="post">
+				<input type="hidden" name="easy_wp_cleaner_optimize" value="optimize" />
+				<input type="submit" class="button-primary" value="Optimize Database" />
+			</form>
+			</p>		
+		<?php
+		} else if( $help_class != null ){
+			
+			include('easy-wp-cleaner-help.php');
+			
+		} ?>
+			<table class="widefat" style="width:400px">
+				<thead>
+					<tr>
+						<th><strong>Note</strong></th>
+					</tr>
+				</thead>
+				<tbody id="the-list">
+					<tr>
+						<th>
+							If you enjoy this plugin,<br/> please give it 5 stars on WordPress:
+							<a title="Easy WP Cleaner" target="_blank" href="https://wordpress.org/support/view/plugin-reviews/easy-wp-cleaner">Rate the plugin</a>
+						</th>
+					</tr>
+					<tr>
+						<th>
+							If there is something wrong about it,<br/> or you need to give your valuable suggestion please contact me:
+							<a target="_blank" href="http://www.nikunjsoni.co.in">http://www.nikunjsoni.co.in</a>
+						</th>
+					</tr>
+				</tbody>
+			</table>
 </div>
-
-<br/>
-
-<div class="row">
-	<div class="col-lg-6">
-		<div class="panel panel-default">
-			<div class="panel-heading">Database Status</div>
-			<div class="panel-body">
-				<div class="table-responsive">
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th scope="col"><?php _e('Table','Easy-WP-Cleaner'); ?></th>
-								<th scope="col"><?php _e('Size','Easy-WP-Cleaner'); ?></th>
-							</tr>
-						</thead>
-						<tbody id="the-list">
-						<?php
-							global $wpdb;
-							$total_size = 0;
-							$ewc_sql = 'SHOW TABLE STATUS FROM `'.DB_NAME.'`';
-							$result = $wpdb->get_results($ewc_sql);
-
-							foreach($result as $row){
-
-								$table_size = $row->Data_length + $row->Index_length;
-								$table_size = $table_size / 1024;
-								$table_size = sprintf("%0.3f",$table_size);
-
-								$every_size = $row->Data_length + $row->Index_length;
-								$every_size = $every_size / 1024;
-								$total_size += $every_size;
-
-								echo "<tr". $alternate .">
-										<td class='column-name'>". $row->Name ."</td>
-										<td class='column-name'>". $table_size ." KB"."</td>
-									</tr>\n";
-							}
-						?>
-						</tbody>
-						<tfoot>
-							<tr>
-								<th scope="col"><?php _e('Total','Easy-WP-Cleaner'); ?></th>
-								<th scope="col" style="font-family:Tahoma;"><?php echo sprintf("%0.3f",$total_size).' KB'; ?></th>
-							</tr>
-						</tfoot>
-					</table>
-					<p>
-						<form action="" method="post">
-							<input type="hidden" name="easy_wp_cleaner_optimize" value="optimize" />
-							<input type="submit" class="button-primary" value="<?php _e('Optimize Database','Easy-WP-Cleaner'); ?>" />
-						</form>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<?php 
+<?php
 }
 add_action('admin_menu', 'easy_wp_cleaner_admin');
-?>

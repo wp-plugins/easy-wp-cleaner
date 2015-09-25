@@ -1,13 +1,26 @@
 <?php
 /*
 Plugin Name: Easy WP Cleaner
-Plugin URI: http://www.nikunjsoni.co.in/
-Description: Easy WP Cleaner is user friendly plugin to clean unnecessary data from WordPress database like "revision", "draft", "auto draft", "moderated comments", "spam comments", "trash comments", "orphan postmeta", "orphan commentmeta", "orphan relationships", "dashboard transient feed" and this plugin also allows you to optimize your WordPress database without any tool like phpMyAdmin.
-Version: 1.0
+Plugin URI: http://www.nikunjsoni.co.in
+Description: Easy WP Cleaner is user friendly plugin to clean unnecessary data from WordPress database and also allows you to optimize your WordPress database.
+Version: 1.2
 Author: Nikunj Soni
-Author URI: http://www.nikunjsoni.co.in/
+Author URI: http://www.nikunjsoni.co.in
 Text Domain: Easy-WP-Cleaner
 */
+
+/*
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+*/
+
+if ( ! defined( 'ABSPATH' ) ){
+	exit; // Exit if accessed this file directly
+} 
 
 function easy_wp_cleaner_settings_link($action_links,$plugin_file){
 	if($plugin_file==plugin_basename(__FILE__)){
@@ -16,21 +29,9 @@ function easy_wp_cleaner_settings_link($action_links,$plugin_file){
 	}
 	return $action_links;
 }
-add_filter('plugin_action_links','easy_wp_cleaner_settings_link',10,2);
+add_filter('plugin_action_links','easy_wp_cleaner_settings_link', 10, 2);
 
 if(is_admin()){
 	require_once('easy-wp-cleaner-admin.php');
-}
-
-function easy_wp_cleaner_admin_script(){
-	wp_register_style('admin-bootstrap',plugins_url( 'assets/css/bootstrap.min.css',__FILE__) );
-	wp_register_style('admin-css',plugins_url( 'assets/css/admin.css',__FILE__) );
-	
-	wp_enqueue_style('admin-bootstrap');
-	wp_enqueue_style('admin-css');
-}
-
-if($_REQUEST['page']=='easy-wp-cleaner/easy-wp-cleaner-admin.php'){
-	add_action( 'wp_print_scripts', 'easy_wp_cleaner_admin_script' ); 
 }
 ?>
