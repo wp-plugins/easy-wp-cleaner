@@ -36,6 +36,14 @@ Usage :
 2. Admin page Settings tab screenshot
 3. Admin page Help tab screenshot
 
+== Other Notes ==
+
+Usage :
+
+1. Download and extract this plugin to `wp-content/plugins/`
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. "Dashboard"->"Settings"->"Easy WP Cleaner"
+
 == Changelog ==
 
 = 1.2 =
