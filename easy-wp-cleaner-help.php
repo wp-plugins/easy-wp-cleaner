@@ -120,7 +120,7 @@
 		<div class="postbox-container">
 			<div class="meta-box-sortables">
 				<div class="postbox">
-					<h3 class="hndle"><span>What is Orphan Relationships?</span></h3>
+					<h3 class="hndle"><span>What are Orphan Relationships?</span></h3>
 					<div class="inside">
 						<div class="main">
 							<p><span>Any entry stored in wp_term_relationships table has term_taxonomy_id=1 and has not object replationship with wp_posts table is known as Orphan Relationships. Easy WP Cleaner deletes all these orphan relationships whenever you want. <a href="https://codex.wordpress.org/Database_Description" target="_blank">Learn more</a></span></p>
